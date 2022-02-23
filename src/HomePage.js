@@ -7,7 +7,7 @@ export default class HomePage extends Component {
       <div>
         <ul>
           <li>
-            <Link to="/exchangeRateJpy">日幣即時匯率</Link>
+            <Link to="/ExchangeRateJpy">日幣即時匯率</Link><br />
           </li>
         </ul>
       </div>

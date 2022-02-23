@@ -1,0 +1,44 @@
+.layout {
+  width: 400px;
+  height: 800px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 10%;
+  .img {
+    margin-top: 7%;
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .source {
+    text-align: center;
+  }
+  .illustrate {
+    margin: 7% 50% 7% 10%;
+  }
+  .textStyle {
+    text-align: center;
+    .input {
+      font-size: 100px;
+      width: 60%;
+      position: relative;
+      border: 2px solid #aaa;
+      border-radius: 5px;
+    }
+  }
+  .outPut {
+    // background-color: red;
+    text-align: center;
+    margin-top: 30%;
+    .cent {
+      font-size: 50px;
+      display: inline;
+    }
+    .exhibit {
+      font-size: 50px;
+      border-bottom: 3px solid #aaa;
+    }
+  }
+}
