@@ -9,6 +9,9 @@ export default class HomePage extends Component {
           <li>
             <Link to="/ExchangeRateJpy">日幣即時匯率</Link><br />
           </li>
+          <li>
+            <Link to="/0056">0056-元大高股息基本面</Link><br />
+          </li>
         </ul>
       </div>
     )
