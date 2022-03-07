@@ -2,15 +2,32 @@ import React, { useState } from 'react';
 import stock from './stock.jpg';
 import "./App.scss";
 
+const twStock = 34.22;
 const cashDividend = 1.80;
 const fundSize = 1.2 * 100000000000;
 const totalUnit = 3496534 * 1000;
 const etfS = (fundSize / totalUnit).toFixed(2); //ETF淨值
+const discountPremium = (((twStock - etfS)).toFixed(2) / twStock * 100).toFixed(2);
 const yearRateOfReturn = 10.20;
+const dividendYield = ((cashDividend / twStock) * 100).toFixed(2);
+const objArr = [
+  { inform: '現金股利', result: `${cashDividend} 元` },
+  { inform: '基金規模', result: `${fundSize} 元` },
+  { inform: '總單位數', result: `${totalUnit} 股` },
+  { inform: '折溢價幅度', result: `${discountPremium} %` },
+  { inform: '殖利率', result: `${dividendYield} %` },
+  { inform: '年報酬率', result: `${yearRateOfReturn} %` },
+];
 
 export default function Index() {
-  const [twStock, setTwStock] = useState(34.22);
+  const [number, setNumber] = useState('');
+  const [show, setShow] = useState(false);
   let today = new Date();
+
+  const handleClick = (index) => {
+    setNumber(index);
+    setShow(!show)
+  }
   return (
     <div className='layout'>
       <header>
@@ -24,21 +41,15 @@ export default function Index() {
         </div>
       </header>
       <div className='nav'>
-        <button>現金股利</button>
-        <button>基金規模</button>
-        <button>總單位數</button>
-        <button>折溢價幅度</button>
-        <button>殖利率</button>
-        <button>年報酬率</button>
+        {objArr.map((item, index) =>
+          <button onClick={handleClick.bind(this, index)}>{item.inform}</button>
+        )}
       </div>
-      <div name='cashDividend' className='result'>{cashDividend}元</div>
-      <div name='fundSize' className='result'>{fundSize}元</div>
-      <div name='totalUnit' className='result'>{totalUnit} 股</div>
-      <div name='etfS' className='result'>
-        {(((twStock - etfS)).toFixed(2) / twStock * 100).toFixed(2)}%
-      </div>
-      <div name='yield' className='result'>{((cashDividend / twStock) * 100).toFixed(2)}%</div>
-      <div name='yearRateOfReturn' className='result'>{yearRateOfReturn}%</div>
+      {show &&
+        <div className='result'>
+          {objArr[number].result}
+        </div>
+      }
       <img className='img_Stock' src={stock} alt="" />
       <footer>
         更新 :
